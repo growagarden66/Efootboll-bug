@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Termos de Uso</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container fade-in">
+    <h2>Leia com atenção!</h2>
+    <p id="texto">A página está carregando, um momento...</p>
+    <a href="index.html" class="termos">← Voltar</a>
+  </div>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('texto').textContent = 
+        'Estes são os termos de uso do Efootboll-Bug. Continue apenas se concordar.';
+    }, 2000);
+  </script>
+</body>
+</html>
