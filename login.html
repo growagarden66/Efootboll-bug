@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Efootboll</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container fade-in">
+    <h2>Login</h2>
+    <input type="text" id="nome" placeholder="Nome">
+    <input type="password" id="senha" placeholder="Senha">
+    <button id="loginBtn">Entrar</button>
+    <p id="mensagem"></p>
+    <a href="index.html" class="termos">← Voltar</a>
+  </div>
+
+  <script>
+    const nomesPermitidos = ['Otto', 'Davi', 'Antheos', 'Arthur'];
+    const senhaCorreta = '1234'; // 🔒 você pode mudar
+
+    document.getElementById('loginBtn').addEventListener('click', () => {
+      const nome = document.getElementById('nome').value.trim();
+      const senha = document.getElementById('senha').value.trim();
+      const msg = document.getElementById('mensagem');
+
+      if (nomesPermitidos.includes(nome) && senha === senhaCorreta) {
+        msg.textContent = 'Login bem-sucedido! 🚀';
+        msg.style.color = 'lime';
+      } else {
+        msg.textContent = 'Nome ou senha incorretos!';
+        msg.style.color = 'red';
+      }
+    });
+  </script>
+</body>
+</html>
