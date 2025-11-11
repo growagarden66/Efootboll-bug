@@ -4,126 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - eFootboll</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #031030, #000);
-      color: white;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      overflow: hidden;
-    }
-
-    h1 {
-      font-size: 2rem;
-      color: #00aaff;
-      margin-bottom: 20px;
-      text-shadow: 0 0 10px #00aaff;
-    }
-
-    .login-box {
-      background: rgba(0, 10, 30, 0.9);
-      border: 1px solid #00aaff;
-      border-radius: 15px;
-      padding: 30px;
-      width: 320px;
-      box-shadow: 0 0 25px #0077ff88;
-      text-align: center;
-    }
-
-    input {
-      width: 90%;
-      padding: 10px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-      background: #001933;
-      color: #fff;
-      font-size: 1rem;
-      text-align: center;
-      outline: none;
-    }
-
-    button {
-      background: #0077ff;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      padding: 10px 25px;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 10px #0077ff;
-    }
-
-    button:hover {
-      background: #0099ff;
-      box-shadow: 0 0 20px #00ccff;
-    }
-
-    .error {
-      color: #ff4b4b;
-      margin-top: 10px;
-      font-size: 0.9rem;
-    }
-
-    .loading {
-      display: none;
-      text-align: center;
-      color: #00ccff;
-      font-size: 1.1rem;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>eFootboll Login</h1>
-  <div class="login-box">
-    <input type="text" id="username" placeholder="Usuário">
-    <input type="password" id="password" placeholder="Senha">
-    <button onclick="login()">Entrar</button>
-    <p class="error" id="error"></p>
-    <p class="loading" id="loading">⏳ Estamos preparando o servidor para o seu desempenho ser o melhor...</p>
+  <div class="login-container">
+    <h1>Login - eFootboll</h1>
+    <input type="text" id="username" placeholder="Digite seu nick único">
+    <button id="login-btn">Entrar</button>
+    <p id="error-msg" style="color:red;"></p>
   </div>
 
   <script>
-    const users = {
-      "Davi": "davi@2025",
-      "Otto": "otto@2025",
-      "Arthur": "arthur@nova",
-      "Antheos": "antheos@2025"
-    };
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-    function login() {
-      const user = document.getElementById("username").value.trim();
-      const pass = document.getElementById("password").value.trim();
-      const errorMsg = document.getElementById("error");
-      const loading = document.getElementById("loading");
+    document.getElementById("login-btn").addEventListener("click", () => {
+      const username = document.getElementById("username").value.trim();
+      const error = document.getElementById("error-msg");
 
-      errorMsg.textContent = "";
-
-      if (users[user] && users[user] === pass) {
-        if (localStorage.getItem("user_" + user)) {
-          errorMsg.textContent = "⚠️ Este usuário já está logado em outro dispositivo!";
-          return;
-        }
-        localStorage.setItem("user_" + user, "ativo");
-        loading.style.display = "block";
-
-        setTimeout(() => {
-          window.location.href = "index.html";
-        }, 3000);
-      } else {
-        errorMsg.textContent = "Usuário ou senha incorretos!";
+      if (!username) {
+        error.textContent = "Digite um nick válido.";
+        return;
       }
-    }
 
-    window.addEventListener("beforeunload", () => {
-      const user = document.getElementById("username").value.trim();
-      if (user) localStorage.removeItem("user_" + user);
+      if (users.includes(username)) {
+        error.textContent = "Esse nick já está sendo usado!";
+        return;
+      }
+
+      users.push(username);
+      localStorage.setItem("users", JSON.stringify(users));
+      localStorage.setItem("loggedUser", username);
+
+      window.location.href = "index.html";
     });
   </script>
 </body>
