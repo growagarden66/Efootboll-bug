@@ -4,115 +4,92 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Termos de Uso – eFootboll</title>
-  <link rel="stylesheet" href="style.css">
   <style>
-    .conteudo {
-      text-align: left;
-      max-width: 700px;
-      margin: 20px auto;
-      background: rgba(0, 0, 0, 0.6);
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-      display: none;
+    body {
+      background: radial-gradient(circle at top, #010d25, #000);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      padding: 40px;
       line-height: 1.6;
-      font-size: 15px;
+      overflow-x: hidden;
     }
 
-    h2 {
+    h1 {
       text-align: center;
+      color: #00aaff;
+      text-shadow: 0 0 15px #00aaff;
     }
 
-    .carregando {
-      color: #00ffff;
-      font-size: 16px;
+    .loading {
       text-align: center;
-      animation: piscar 1s infinite alternate;
+      font-size: 1.2rem;
+      color: #00ccff;
+      margin-top: 30px;
+      animation: blink 1.2s infinite alternate;
     }
 
-    @keyframes piscar {
-      from { opacity: 0.4; }
+    @keyframes blink {
+      from { opacity: 0.5; }
       to { opacity: 1; }
     }
 
-    .voltar {
-      display: block;
-      margin-top: 20px;
-      text-align: center;
-      color: #00ffff;
-      text-decoration: none;
+    .back-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #0077ff;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 15px #0077ff;
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: #0099ff;
+      box-shadow: 0 0 25px #00ccff;
+    }
+
+    .content {
+      display: none;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
   </style>
 </head>
 <body>
-  <div class="container fade-in">
-    <h2>Leia com atenção!</h2>
-    <p id="mensagem" class="carregando">A página está carregando, um momento...</p>
+  <h1>🧾 Termos de Uso – eFootboll</h1>
+  <div class="loading" id="loading">⚠️ Leia com atenção!<br><br>⏳ A página está carregando, aguarde um momento...</div>
 
-    <div id="conteudo" class="conteudo">
-      <h3>Termos de Uso – eFootboll</h3>
-      <p><strong>Criado por:</strong> Antheos</p>
-      <p><strong>Última atualização:</strong> 10 de novembro de 2025</p>
-      <hr>
-
-      <h4>1. Aceitação dos Termos</h4>
-      <p>Ao acessar e utilizar o site eFootboll, você concorda com estes Termos de Uso e com todas as leis e regulamentos aplicáveis.
-      Se você não concordar com algum dos termos aqui descritos, recomendamos que não utilize o site.</p>
-
-      <h4>2. Sobre o eFootboll</h4>
-      <p>O eFootboll é um projeto criado por Antheos, com o objetivo de oferecer conteúdo, notícias, informações e entretenimento sobre o mundo do futebol digital (como eFootball, FIFA, entre outros).
-      Todo o material publicado é apenas para fins informativos e de lazer.</p>
-
-      <h4>3. Uso do Conteúdo</h4>
-      <p>O conteúdo do site (textos, imagens, vídeos e design) pertence ao eFootboll e ao criador Antheos.  
-      É proibido copiar, modificar, distribuir ou reutilizar qualquer parte sem autorização prévia.</p>
-
-      <h4>4. Conta e Usuário</h4>
-      <p>Se o site permitir criação de contas, o usuário é responsável por manter suas informações seguras e atualizadas.
-      O eFootboll não se responsabiliza por atividades realizadas por terceiros que utilizem sua conta sem autorização.</p>
-
-      <h4>5. Limitações de Responsabilidade</h4>
-      <p>O eFootboll não se responsabiliza por:
-        <ul>
-          <li>Problemas técnicos ou falhas de conexão;</li>
-          <li>Danos diretos ou indiretos pelo uso das informações;</li>
-          <li>Conteúdos de sites externos mencionados ou linkados.</li>
-        </ul>
-      </p>
-
-      <h4>6. Comentários e Conduta dos Usuários</h4>
-      <p>Ao interagir em áreas públicas (como comentários, chats ou fóruns), o usuário se compromete a:
-        <ul>
-          <li>Não publicar conteúdo ofensivo, ilegal ou discriminatório;</li>
-          <li>Respeitar outros usuários e moderadores;</li>
-          <li>Não divulgar spam, links maliciosos ou propagandas indevidas.</li>
-        </ul>
-      O eFootboll reserva o direito de remover comentários ou banir usuários que desrespeitem estas regras.</p>
-
-      <h4>7. Alterações dos Termos</h4>
-      <p>O eFootboll e o criador Antheos podem alterar estes Termos a qualquer momento, sem aviso prévio.
-      As alterações entram em vigor assim que publicadas nesta página.</p>
-
-      <h4>8. Contato</h4>
-      <p>📧 <strong>teo92943@gmail.com</strong></p>
-
-      <h4>9. Direitos Autorais</h4>
-      <p>Todo o conteúdo, design e marca eFootboll são de propriedade de Antheos.
-      Qualquer reprodução sem permissão expressa é proibida.</p>
-
-      <h4>10. Lei Aplicável</h4>
-      <p>Estes Termos são regidos pelas leis do Brasil, e qualquer conflito será resolvido de acordo com a legislação brasileira.</p>
-    </div>
-
-    <a href="index.html" class="voltar">← Voltar ao menu</a>
+  <div class="content" id="content">
+    <p><strong>Criado por Antheos</strong><br>Última atualização: 10 de novembro de 2025</p>
+    <hr>
+    <p>1. <b>Aceitação dos Termos</b><br>Ao acessar e utilizar o site eFootboll, você concorda com estes Termos de Uso e com todas as leis aplicáveis. Se não concordar, recomendamos que não utilize o site.</p>
+    <p>2. <b>Sobre o eFootboll</b><br>O eFootboll é um projeto criado por Antheos, com o objetivo de oferecer conteúdo e entretenimento sobre o mundo do futebol digital.</p>
+    <p>3. <b>Uso do Conteúdo</b><br>O conteúdo pertence ao eFootboll e ao criador Antheos. É proibido copiar, modificar ou distribuir sem autorização.</p>
+    <p>4. <b>Conta e Usuário</b><br>O usuário é responsável por manter suas informações seguras. O eFootboll não se responsabiliza por uso indevido de contas.</p>
+    <p>5. <b>Limitações de Responsabilidade</b><br>O eFootboll não se responsabiliza por falhas técnicas, danos ou links externos.</p>
+    <p>6. <b>Comentários e Conduta</b><br>O usuário deve respeitar outros, não publicar conteúdo ofensivo, ilegal ou spam.</p>
+    <p>7. <b>Alterações dos Termos</b><br>Podem ocorrer sem aviso prévio e entram em vigor após a publicação.</p>
+    <p>8. <b>Contato</b><br>📧 teo92943@gmail.com</p>
+    <p>9. <b>Direitos Autorais</b><br>Todo o conteúdo e marca eFootboll são de propriedade de Antheos.</p>
+    <p>10. <b>Lei Aplicável</b><br>Regido pelas leis do Brasil.</p>
   </div>
 
+  <button class="back-btn" onclick="window.location.href='index.html'">⬅ Voltar</button>
+
   <script>
-    // Animação de carregamento antes de exibir o conteúdo
     setTimeout(() => {
-      document.getElementById('mensagem').style.display = 'none';
-      document.getElementById('conteudo').style.display = 'block';
-    }, 2500);
+      document.getElementById("loading").style.display = "none";
+      document.getElementById("content").style.display = "block";
+    }, 3000);
   </script>
 </body>
 </html>
