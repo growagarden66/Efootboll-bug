@@ -1,236 +1,52 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>eFootboll — Bug (futurista)</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>eFootboll - Início</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div id="loading-screen">
+    <h2>Estamos preparando o servidor pro seu desempenho ser o melhor ⚙️</h2>
+  </div>
 
-  <!-- TOPBAR -->
-  <header class="topbar">
-    <div class="brand">
-      <div class="brand-left">
-        <h1 class="brand-title">eFootboll <span class="brand-bug">Bug</span></h1>
-        <p class="brand-sub">Futebol digital · Comunidade</p>
-      </div>
+  <div id="main-content" class="hidden">
+    <header>
+      <h1>⚽ eFootboll</h1>
+      <button id="theme-toggle">🌙 Alternar Tema</button>
+    </header>
 
-      <div class="top-actions">
-        <button id="themeToggle" class="icon-btn" title="Modo claro/escuro">🌗</button>
-        <button id="profileBtn" class="btn small hidden">Perfil</button>
-        <button id="logoutBtn" class="btn small hidden">Sair</button>
-        <button id="loginOpen" class="btn small">Entrar</button>
-        <button id="registerOpen" class="btn small outline">Criar conta</button>
-      </div>
-    </div>
-  </header>
+    <main>
+      <section class="highlight">
+        <h2>Bem-vindo ao eFootboll!</h2>
+        <p>Explore o mundo do futebol digital com estilo e tecnologia.</p>
+      </section>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <button class="nav-btn active" data-target="home">Início</button>
-    <button class="nav-btn" data-target="curiosidades">Curiosidades</button>
-    <button class="nav-btn" data-target="noticias">Notícias</button>
-    <button class="nav-btn" data-target="atualizacoes">Atualizações</button>
-    <button class="nav-btn" data-target="forum">Fórum</button>
-    <button class="nav-btn" data-target="termos">Termos</button>
-  </nav>
-
-  <!-- MAIN (SPA sections) -->
-  <main id="main">
-    <!-- HOME -->
-    <section id="home" class="page active">
-      <h2>Bem-vindo ao eFootboll Bug</h2>
-      <p class="lead">Design futurista · IA offline · Comunidade local</p>
-
-      <div class="home-grid">
-        <div class="card">
-          <h3>Rápido</h3>
-          <p>Teste o botão abaixo para abrir a página de teste (Messi).</p>
-          <div class="actions">
-            <button id="btnMessi" class="btn primary">Messi (teste)</button>
-            <button id="btnCurioQuick" class="btn outline">Gerar curiosidade</button>
-          </div>
-          <div id="quickCurio" class="card small hidden"></div>
+      <section class="ai-assistant">
+        <h3>💬 Suporte IA</h3>
+        <div id="chat-box">
+          <div id="messages"></div>
+          <input type="text" id="user-input" placeholder="Fale com a IA..." />
+          <button id="send-btn">Enviar</button>
         </div>
+      </section>
 
-        <div class="card">
-          <h3>Seu Perfil</h3>
-          <div id="profilePanel" class="card small hidden">
-            <p id="pfName">Nome: —</p>
-            <p id="pfUser">Usuário: —</p>
-            <p id="pfPoints">Pontos: 0</p>
-            <p id="pfAch">Conquistas: —</p>
-          </div>
-          <div class="hint">Faça login / crie conta para salvar progresso e conversar com seus amigos.</div>
-        </div>
-
-        <div class="card">
-          <h3>Ranking (local)</h3>
-          <div id="rankingBox" class="card small"></div>
-          <div class="hint">Top local com base em pontos ganhos no site.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CURIOSIDADES -->
-    <section id="curiosidades" class="page">
-      <h2>Curiosidades</h2>
-      <p>Clique para ver curiosidades sobre futebol digital e real.</p>
-      <button id="newCurio" class="btn primary">Gerar curiosidade</button>
-      <div id="curioBox" class="card"></div>
-    </section>
-
-    <!-- NOTÍCIAS -->
-    <section id="noticias" class="page">
-      <h2>Notícias (manual)</h2>
-      <div id="newsList" class="cards-grid"></div>
-      <p class="hint">Edite notícias no script (array <code>newsData</code>).</p>
-    </section>
-
-    <!-- ATUALIZAÇÕES -->
-    <section id="atualizacoes" class="page">
-      <h2>Registro de Atualizações</h2>
-      <ul id="updateList" class="updates"></ul>
-    </section>
-
-    <!-- FÓRUM LOCAL -->
-    <section id="forum" class="page">
-      <h2>Fórum da Comunidade</h2>
-      <div class="card">
-        <textarea id="forumText" placeholder="Escreva uma mensagem pública..." rows="3"></textarea>
-        <div class="actions">
-          <button id="forumPost" class="btn primary">Publicar</button>
-          <button id="forumRefresh" class="btn outline">Atualizar</button>
-        </div>
-      </div>
-      <div id="forumList" class="cards-grid"></div>
-    </section>
-
-    <!-- TERMOS -->
-    <section id="termos" class="page">
-      <h2>🧾 Termos de Uso – eFootboll</h2>
-      <p class="muted">Criado por Antheos — Última atualização: 10 de novembro de 2025</p>
-      <div class="terms-content card">
-        <!-- (texto completo exato) -->
-        <h3>1. Aceitação dos Termos</h3>
-        <p>Ao acessar e utilizar o site eFootboll, você concorda com estes Termos de Uso e com todas as leis e regulamentos aplicáveis.
-        Se você não concordar com algum dos termos aqui descritos, recomendamos que não utilize o site.</p>
-
-        <hr>
-        <h3>2. Sobre o eFootboll</h3>
-        <p>O eFootboll é um projeto criado por Antheos, com o objetivo de oferecer conteúdo, notícias, informações e entretenimento sobre o mundo do futebol digital (como eFootball, FIFA, entre outros).
-        Todo o material publicado é apenas para fins informativos e de lazer.</p>
-
-        <hr>
-        <h3>3. Uso do Conteúdo</h3>
-        <p>O conteúdo do site (textos, imagens, vídeos e design) pertence ao eFootboll e ao criador Antheos.
-        É proibido copiar, modificar, distribuir ou reutilizar qualquer parte sem autorização prévia.
-        O uso indevido do material poderá resultar em medidas legais.</p>
-
-        <hr>
-        <h3>4. Conta e Usuário</h3>
-        <p>Se o site permitir criação de contas, o usuário é responsável por manter suas informações seguras e atualizadas.
-        O eFootboll não se responsabiliza por atividades realizadas por terceiros que utilizem sua conta sem autorização.</p>
-
-        <hr>
-        <h3>5. Limitações de Responsabilidade</h3>
-        <p>O eFootboll não se responsabiliza por:</p>
-        <ul>
-          <li>Problemas técnicos, falhas de conexão ou indisponibilidade temporária do site;</li>
-          <li>Dano direto ou indireto resultante do uso das informações aqui publicadas;</li>
-          <li>Conteúdos de sites externos que possam ser mencionados ou linkados.</li>
+      <section class="updates">
+        <h3>🧾 Atualizações Recentes</h3>
+        <ul id="updates-list">
+          <li>🚀 Novo sistema de login com nicks únicos</li>
+          <li>🎨 Tema azul neon adicionado</li>
+          <li>💡 IA aprimorada agora entende comandos básicos</li>
         </ul>
+      </section>
 
-        <hr>
-        <h3>6. Comentários e Conduta dos Usuários</h3>
-        <p>Ao interagir em áreas públicas (como comentários, chats ou fóruns), o usuário se compromete a:</p>
-        <ul>
-          <li>Não publicar conteúdo ofensivo, ilegal ou discriminatório;</li>
-          <li>Respeitar outros usuários e moderadores;</li>
-          <li>Não divulgar spam, links maliciosos ou propagandas indevidas.</li>
-        </ul>
-        <p>O eFootboll reserva o direito de remover comentários ou banir usuários que desrespeitem estas regras.</p>
-
-        <hr>
-        <h3>7. Alterações dos Termos</h3>
-        <p>O eFootboll e o criador Antheos podem alterar estes Termos a qualquer momento, sem aviso prévio.
-        As alterações entram em vigor assim que publicadas nesta página.</p>
-
-        <hr>
-        <h3>8. Contato</h3>
-        <p>Para dúvidas, sugestões ou solicitações relacionadas a estes Termos, entre em contato com o criador:<br>📧 teo92943@gmail.com</p>
-
-        <hr>
-        <h3>9. Direitos Autorais</h3>
-        <p>Todo o conteúdo, design e marca eFootboll são de propriedade de Antheos.
-        Qualquer reprodução sem permissão expressa é proibida.</p>
-
-        <hr>
-        <h3>10. Lei Aplicável</h3>
-        <p>Estes Termos são regidos pelas leis do Brasil, e qualquer conflito será resolvido de acordo com a legislação brasileira.</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- LOGIN MODAL -->
-  <div id="loginModal" class="modal hidden">
-    <div class="modal-card">
-      <h3>Entrar</h3>
-      <input id="modalUser" placeholder="Usuário" autocomplete="off" />
-      <input id="modalPass" placeholder="Senha" type="password" />
-      <div class="modal-actions">
-        <button id="modalLoginBtn" class="btn primary">Entrar</button>
-        <button id="modalClose" class="btn outline">Cancelar</button>
-      </div>
-      <p id="modalMsg" class="small-msg"></p>
-    </div>
-  </div>
-
-  <!-- REGISTER MODAL -->
-  <div id="registerModal" class="modal hidden">
-    <div class="modal-card">
-      <h3>Criar Conta</h3>
-      <input id="regUser" placeholder="Nome de usuário (único)" autocomplete="off" />
-      <input id="regDisplay" placeholder="Nome exibido (opcional)" />
-      <input id="regPass" type="password" placeholder="Senha" />
-      <div style="display:flex;gap:8px;justify-content:center;margin-top:10px">
-        <button id="regCreate" class="btn primary">Criar</button>
-        <button id="regCancel" class="btn outline">Cancelar</button>
-      </div>
-      <p id="regMsg" class="small-msg"></p>
-    </div>
-  </div>
-
-  <!-- FLOATING CHAT WIDGET -->
-  <button id="chatOpen" class="floating-chat-btn" title="Abrir Suporte">💬</button>
-
-  <div id="chatWidget" class="chat-widget hidden">
-    <div class="chat-header">
-      <strong id="aiName">Suporte IA</strong>
-      <div>
-        <button id="chatClose" class="icon-btn">×</button>
-      </div>
-    </div>
-
-    <div id="chatMessages" class="chat-messages">
-      <div class="chat-msg ai"><b>IA:</b> Olá! Pergunte algo — ex: "O que é eFootboll Bug?"</div>
-    </div>
-
-    <div class="chat-controls">
-      <input id="chatInput" placeholder="Escreva..." autocomplete="off" />
-      <button id="chatSend" class="btn">Enviar</button>
-    </div>
-  </div>
-
-  <!-- DEV PANEL HIDDEN (5 clicks bottom-left) -->
-  <div id="devPanel" class="dev-panel hidden">
-    <h4>Painel Dev</h4>
-    <button id="devClearUsers" class="btn small outline">Apagar usuários (limpar)</button>
-    <button id="devDump" class="btn small">Mostrar storage no console</button>
-    <button id="devClose" class="btn small outline">Fechar</button>
+      <section class="test-link">
+        <button id="messi-btn">🌟 Messi</button>
+      </section>
+    </main>
   </div>
 
   <script src="script.js"></script>
 </body>
-        </html>
+</html>
