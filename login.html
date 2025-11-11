@@ -3,35 +3,127 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Efootboll</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Login - eFootboll</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: radial-gradient(circle at top, #031030, #000);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2rem;
+      color: #00aaff;
+      margin-bottom: 20px;
+      text-shadow: 0 0 10px #00aaff;
+    }
+
+    .login-box {
+      background: rgba(0, 10, 30, 0.9);
+      border: 1px solid #00aaff;
+      border-radius: 15px;
+      padding: 30px;
+      width: 320px;
+      box-shadow: 0 0 25px #0077ff88;
+      text-align: center;
+    }
+
+    input {
+      width: 90%;
+      padding: 10px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background: #001933;
+      color: #fff;
+      font-size: 1rem;
+      text-align: center;
+      outline: none;
+    }
+
+    button {
+      background: #0077ff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 25px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 0 10px #0077ff;
+    }
+
+    button:hover {
+      background: #0099ff;
+      box-shadow: 0 0 20px #00ccff;
+    }
+
+    .error {
+      color: #ff4b4b;
+      margin-top: 10px;
+      font-size: 0.9rem;
+    }
+
+    .loading {
+      display: none;
+      text-align: center;
+      color: #00ccff;
+      font-size: 1.1rem;
+    }
+  </style>
 </head>
 <body>
-  <div class="container fade-in">
-    <h2>Login</h2>
-    <input type="text" id="nome" placeholder="Nome">
-    <input type="password" id="senha" placeholder="Senha">
-    <button id="loginBtn">Entrar</button>
-    <p id="mensagem"></p>
-    <a href="index.html" class="termos">← Voltar</a>
+  <h1>eFootboll Login</h1>
+  <div class="login-box">
+    <input type="text" id="username" placeholder="Usuário">
+    <input type="password" id="password" placeholder="Senha">
+    <button onclick="login()">Entrar</button>
+    <p class="error" id="error"></p>
+    <p class="loading" id="loading">⏳ Estamos preparando o servidor para o seu desempenho ser o melhor...</p>
   </div>
 
   <script>
-    const nomesPermitidos = ['Otto', 'Davi', 'Antheos', 'Arthur'];
-    const senhaCorreta = '1234'; // 🔒 você pode mudar
+    const users = {
+      "Davi": "davi@2025",
+      "Otto": "otto@2025",
+      "Arthur": "arthur@nova",
+      "Antheos": "antheos@2025"
+    };
 
-    document.getElementById('loginBtn').addEventListener('click', () => {
-      const nome = document.getElementById('nome').value.trim();
-      const senha = document.getElementById('senha').value.trim();
-      const msg = document.getElementById('mensagem');
+    function login() {
+      const user = document.getElementById("username").value.trim();
+      const pass = document.getElementById("password").value.trim();
+      const errorMsg = document.getElementById("error");
+      const loading = document.getElementById("loading");
 
-      if (nomesPermitidos.includes(nome) && senha === senhaCorreta) {
-        msg.textContent = 'Login bem-sucedido! 🚀';
-        msg.style.color = 'lime';
+      errorMsg.textContent = "";
+
+      if (users[user] && users[user] === pass) {
+        if (localStorage.getItem("user_" + user)) {
+          errorMsg.textContent = "⚠️ Este usuário já está logado em outro dispositivo!";
+          return;
+        }
+        localStorage.setItem("user_" + user, "ativo");
+        loading.style.display = "block";
+
+        setTimeout(() => {
+          window.location.href = "index.html";
+        }, 3000);
       } else {
-        msg.textContent = 'Nome ou senha incorretos!';
-        msg.style.color = 'red';
+        errorMsg.textContent = "Usuário ou senha incorretos!";
       }
+    }
+
+    window.addEventListener("beforeunload", () => {
+      const user = document.getElementById("username").value.trim();
+      if (user) localStorage.removeItem("user_" + user);
     });
   </script>
 </body>
