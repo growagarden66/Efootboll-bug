@@ -1,95 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Termos de Uso – eFootboll</title>
-  <style>
-    body {
-      background: radial-gradient(circle at top, #010d25, #000);
-      color: #fff;
-      font-family: 'Poppins', sans-serif;
-      padding: 40px;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    h1 {
-      text-align: center;
-      color: #00aaff;
-      text-shadow: 0 0 15px #00aaff;
-    }
-
-    .loading {
-      text-align: center;
-      font-size: 1.2rem;
-      color: #00ccff;
-      margin-top: 30px;
-      animation: blink 1.2s infinite alternate;
-    }
-
-    @keyframes blink {
-      from { opacity: 0.5; }
-      to { opacity: 1; }
-    }
-
-    .back-btn {
-      position: fixed;
-      bottom: 20px;
-      left: 20px;
-      background: #0077ff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 0 15px #0077ff;
-      transition: 0.3s;
-    }
-
-    .back-btn:hover {
-      background: #0099ff;
-      box-shadow: 0 0 25px #00ccff;
-    }
-
-    .content {
-      display: none;
-      animation: fadeIn 1s ease-in;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Termos de Uso - eFootboll</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>🧾 Termos de Uso – eFootboll</h1>
-  <div class="loading" id="loading">⚠️ Leia com atenção!<br><br>⏳ A página está carregando, aguarde um momento...</div>
-
-  <div class="content" id="content">
-    <p><strong>Criado por Antheos</strong><br>Última atualização: 10 de novembro de 2025</p>
+  <main class="terms">
+    <h1>🧾 Termos de Uso – eFootboll</h1>
+    <h3>Criado por Antheos</h3>
+    <p><strong>Última atualização:</strong> 10 de novembro de 2025</p>
     <hr>
-    <p>1. <b>Aceitação dos Termos</b><br>Ao acessar e utilizar o site eFootboll, você concorda com estes Termos de Uso e com todas as leis aplicáveis. Se não concordar, recomendamos que não utilize o site.</p>
-    <p>2. <b>Sobre o eFootboll</b><br>O eFootboll é um projeto criado por Antheos, com o objetivo de oferecer conteúdo e entretenimento sobre o mundo do futebol digital.</p>
-    <p>3. <b>Uso do Conteúdo</b><br>O conteúdo pertence ao eFootboll e ao criador Antheos. É proibido copiar, modificar ou distribuir sem autorização.</p>
-    <p>4. <b>Conta e Usuário</b><br>O usuário é responsável por manter suas informações seguras. O eFootboll não se responsabiliza por uso indevido de contas.</p>
-    <p>5. <b>Limitações de Responsabilidade</b><br>O eFootboll não se responsabiliza por falhas técnicas, danos ou links externos.</p>
-    <p>6. <b>Comentários e Conduta</b><br>O usuário deve respeitar outros, não publicar conteúdo ofensivo, ilegal ou spam.</p>
-    <p>7. <b>Alterações dos Termos</b><br>Podem ocorrer sem aviso prévio e entram em vigor após a publicação.</p>
-    <p>8. <b>Contato</b><br>📧 teo92943@gmail.com</p>
-    <p>9. <b>Direitos Autorais</b><br>Todo o conteúdo e marca eFootboll são de propriedade de Antheos.</p>
-    <p>10. <b>Lei Aplicável</b><br>Regido pelas leis do Brasil.</p>
-  </div>
-
-  <button class="back-btn" onclick="window.location.href='index.html'">⬅ Voltar</button>
-
-  <script>
-    setTimeout(() => {
-      document.getElementById("loading").style.display = "none";
-      document.getElementById("content").style.display = "block";
-    }, 3000);
-  </script>
+    <p>1. Ao acessar e utilizar o eFootboll, você concorda com estes Termos.</p>
+    <p>2. O eFootboll é um projeto de conteúdo sobre futebol digital criado por Antheos.</p>
+    <p>3. É proibido copiar ou reutilizar material sem permissão.</p>
+    <p>4. O usuário é responsável por manter suas informações seguras.</p>
+    <p>5. O eFootboll não se responsabiliza por falhas técnicas ou danos indiretos.</p>
+    <p>6. Comentários ofensivos serão removidos.</p>
+    <p>7. Os Termos podem ser alterados sem aviso prévio.</p>
+    <p>8. Contato: <strong>teo92943@gmail.com</strong></p>
+    <p>9. Todo o conteúdo é propriedade de Antheos.</p>
+  </main>
 </body>
 </html>
